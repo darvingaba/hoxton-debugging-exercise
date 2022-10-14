@@ -7,11 +7,11 @@ Business logic for the main app component
 */
 const useApp = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [products, setProducts] = useState<null | Product[]>(null);
+  const [products, setProducts] = useState<Product[] | null>(null);
 
   const init = React.useCallback(() => {
     setIsLoading(true);
-    getAll((products) =>{
+    getAll((products) => {
       setProducts(products);
       setIsLoading(false);
     }).catch((err) => {

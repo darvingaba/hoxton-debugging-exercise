@@ -7,17 +7,23 @@ type Props = {
   products: ProductType[] | null;
 }
 
-const ProductList = ({products}:Props) => {
-  if(products===null){
-    return (<LoadingAnimation/>)
+const ProductList = (props: { products: { products: ProductType[]; } | null; }) => {
+  if(props.products===null){
+    return <>no</>
   }
   return (
     <div>
-      {products.map(product =>
-        <Product product={product} />
-      )}
+      <ul>
+        {
+          props.products.products.map(product=>(
+            <li>
+              <Product product={product} />
+            </li>
+          ))
+        }
+      </ul>
     </div>
-  )
+  );
 }
-
 export default ProductList
+
